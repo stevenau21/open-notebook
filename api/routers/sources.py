@@ -93,7 +93,7 @@ def parse_source_form_data(
     content: Optional[str] = Form(None),
     title: Optional[str] = Form(None),
     transformations: Optional[str] = Form(None),  # JSON string of transformation IDs
-    embed: str = Form("false"),  # Accept as string, convert to bool
+    embed: str = Form("true"),  # Accept as string, convert to bool
     delete_source: str = Form("false"),  # Accept as string, convert to bool
     async_processing: str = Form("false"),  # Accept as string, convert to bool
     file: Optional[UploadFile] = File(None),
@@ -187,7 +187,8 @@ async def get_sources(
             query = f"""
                 SELECT id, asset, created, title, updated, topics, command,
                 (SELECT VALUE count() FROM source_insight WHERE source = $parent.id GROUP ALL)[0].count OR 0 AS insights_count,
-                (SELECT VALUE id FROM source_embedding WHERE source = $parent.id LIMIT 1) != [] AS embedded
+                (SELECT VALUE id FROM source_embedding WHERE source = $parent.id LIMIT 1) != [] AS embedded,
+                array::len((SELECT VALUE id FROM source_embedding WHERE source = $parent.id)) OR 0 AS embedded_chunks
                 FROM (select value in from reference where out=$notebook_id)
                 {order_clause}
                 LIMIT $limit START $offset
@@ -206,7 +207,8 @@ async def get_sources(
             query = f"""
                 SELECT id, asset, created, title, updated, topics, command,
                 (SELECT VALUE count() FROM source_insight WHERE source = $parent.id GROUP ALL)[0].count OR 0 AS insights_count,
-                (SELECT VALUE id FROM source_embedding WHERE source = $parent.id LIMIT 1) != [] AS embedded
+                (SELECT VALUE id FROM source_embedding WHERE source = $parent.id LIMIT 1) != [] AS embedded,
+                array::len((SELECT VALUE id FROM source_embedding WHERE source = $parent.id)) OR 0 AS embedded_chunks
                 FROM source
                 {order_clause}
                 LIMIT $limit START $offset
@@ -258,7 +260,7 @@ async def get_sources(
                     if row.get("asset")
                     else None,
                     embedded=row.get("embedded", False),
-                    embedded_chunks=0,  # Not needed in list view
+                    embedded_chunks=row.get("embedded_chunks", 0),
                     insights_count=row.get("insights_count", 0),
                     created=str(row["created"]),
                     updated=str(row["updated"]),
