@@ -64,8 +64,13 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y --no-install-reco
     ffmpeg \
     supervisor \
     curl \
+    imagemagick \
+    tesseract-ocr \
+    tesseract-ocr-eng \
+    && sed -i 's/rights="none" pattern="PDF"/rights="read|write" pattern="PDF"/' /etc/ImageMagick-6/policy.xml \
     && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
     && apt-get install -y nodejs \
+    && npm install -g @llamaindex/liteparse \
     && rm -rf /var/lib/apt/lists/*
 
 # Install uv using the official method

@@ -75,7 +75,19 @@ async def content_process(state: SourceState) -> dict:
         logger.warning(f"Failed to retrieve speech-to-text model configuration: {e}")
         # Continue without custom audio model (content-core will use its default)
 
-    processed_state = await extract_content(content_state)
+    # Check if LiteParse engine is selected and we have a file to parse
+    doc_engine = content_state.get("document_engine", "auto")
+    file_path = content_state.get("file_path")
+
+    if doc_engine == "liteparse" and file_path:
+        logger.info(f"Using LiteParse engine for document: {file_path}")
+        processed_state = await _process_with_liteparse(content_state)
+    else:
+        if doc_engine == "liteparse" and not file_path:
+            logger.warning(
+                "LiteParse selected but no file_path provided, falling back to content_core"
+            )
+        processed_state = await extract_content(content_state)
 
     if not processed_state.content or not processed_state.content.strip():
         url = processed_state.url or ""
@@ -92,6 +104,63 @@ async def content_process(state: SourceState) -> dict:
         )
 
     return {"content_state": processed_state}
+
+
+async def _process_with_liteparse(content_state: Dict[str, Any]) -> ProcessSourceState:
+    """Process a document file using the LiteParse CLI tool.
+
+    Runs `lit parse <file_path>` as a subprocess and captures the markdown output.
+    Returns a ProcessSourceState compatible with the rest of the pipeline.
+    """
+    import asyncio
+    import os
+
+    file_path = content_state["file_path"]
+
+    if not os.path.exists(file_path):
+        raise ValueError(f"File not found: {file_path}")
+
+    try:
+        process = await asyncio.create_subprocess_exec(
+            "lit",
+            "parse",
+            file_path,
+            stdout=asyncio.subprocess.PIPE,
+            stderr=asyncio.subprocess.PIPE,
+        )
+        stdout, stderr = await process.communicate()
+
+        if process.returncode != 0:
+            error_msg = stderr.decode("utf-8", errors="replace").strip()
+            raise ValueError(
+                f"LiteParse failed (exit code {process.returncode}): {error_msg}"
+            )
+
+        parsed_content = stdout.decode("utf-8", errors="replace").strip()
+
+        if not parsed_content:
+            raise ValueError("LiteParse returned empty output")
+
+        logger.info(
+            f"LiteParse successfully parsed {file_path} "
+            f"({len(parsed_content)} characters)"
+        )
+
+        # Build a ProcessSourceState matching what content_core would return
+        title = os.path.splitext(os.path.basename(file_path))[0]
+
+        return ProcessSourceState(
+            content=parsed_content,
+            file_path=file_path,
+            url=content_state.get("url"),
+            title=title,
+        )
+
+    except FileNotFoundError:
+        raise ValueError(
+            "LiteParse CLI ('lit') is not installed or not found in PATH. "
+            "Install it with: npm install -g @llamaindex/liteparse"
+        )
 
 
 async def save_source(state: SourceState) -> dict:
