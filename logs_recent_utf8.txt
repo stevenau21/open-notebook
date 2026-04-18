@@ -1,0 +1,100 @@
+open_notebook-1  | 2026-04-03 12:26:22,307 INFO success: api entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+open_notebook-1  | 2026-04-03 12:26:22,307 INFO success: api entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+open_notebook-1  | 2026-04-03 12:26:22.539 | DEBUG    | surreal_commands.decorators:decorator:76 - Retry config parsed for command open_notebook.embed_note: enabled=True max_attempts=5 wait_strategy=<RetryStrategy.EXPONENTIAL_JITTER: 'exponential_jitter'> wait_time=1.0 wait_min=1.0 wait_max=60.0 wait_multiplier=2.0 retry_on=None stop_on=[<class 'ValueError'>, <class 'open_notebook.exceptions.ConfigurationError'>] retry_log_level=<RetryLogLevel.DEBUG: 'debug'>
+open_notebook-1  | 2026-04-03 12:26:22.539 | DEBUG    | surreal_commands.core.registry:register:78 - Registered command open_notebook.embed_note
+open_notebook-1  | 2026-04-03 12:26:22.539 | DEBUG    | surreal_commands.decorators:decorator:76 - Retry config parsed for command open_notebook.embed_insight: enabled=True max_attempts=5 wait_strategy=<RetryStrategy.EXPONENTIAL_JITTER: 'exponential_jitter'> wait_time=1.0 wait_min=1.0 wait_max=60.0 wait_multiplier=2.0 retry_on=None stop_on=[<class 'ValueError'>, <class 'open_notebook.exceptions.ConfigurationError'>] retry_log_level=<RetryLogLevel.DEBUG: 'debug'>
+open_notebook-1  | 2026-04-03 12:26:22.539 | DEBUG    | surreal_commands.core.registry:register:78 - Registered command open_notebook.embed_insight
+open_notebook-1  | 2026-04-03 12:26:22.539 | DEBUG    | surreal_commands.decorators:decorator:76 - Retry config parsed for command open_notebook.embed_source: enabled=True max_attempts=5 wait_strategy=<RetryStrategy.EXPONENTIAL_JITTER: 'exponential_jitter'> wait_time=1.0 wait_min=1.0 wait_max=60.0 wait_multiplier=2.0 retry_on=None stop_on=[<class 'ValueError'>, <class 'open_notebook.exceptions.ConfigurationError'>] retry_log_level=<RetryLogLevel.DEBUG: 'debug'>
+open_notebook-1  | 2026-04-03 12:26:22.539 | DEBUG    | surreal_commands.core.registry:register:78 - Registered command open_notebook.embed_source
+open_notebook-1  | 2026-04-03 12:26:22.539 | DEBUG    | surreal_commands.decorators:decorator:76 - Retry config parsed for command open_notebook.create_insight: enabled=True max_attempts=5 wait_strategy=<RetryStrategy.EXPONENTIAL_JITTER: 'exponential_jitter'> wait_time=1.0 wait_min=1.0 wait_max=60.0 wait_multiplier=2.0 retry_on=None stop_on=[<class 'ValueError'>, <class 'open_notebook.exceptions.ConfigurationError'>] retry_log_level=<RetryLogLevel.DEBUG: 'debug'>
+open_notebook-1  | 2026-04-03 12:26:22.539 | DEBUG    | surreal_commands.core.registry:register:78 - Registered command open_notebook.create_insight
+open_notebook-1  | 2026-04-03 12:26:22.539 | DEBUG    | surreal_commands.core.registry:register:78 - Registered command open_notebook.rebuild_embeddings
+open_notebook-1  | 2026-04-03 12:26:22.541 | DEBUG    | surreal_commands.core.registry:register:78 - Registered command open_notebook.process_text
+open_notebook-1  | 2026-04-03 12:26:22.541 | DEBUG    | surreal_commands.core.registry:register:78 - Registered command open_notebook.analyze_data
+open_notebook-1  | 2026-04-03 12:26:22.654 | INFO     | podcast_creator.graph:<module>:20 - Creating podcast generation graph
+open_notebook-1  | 2026-04-03 12:26:22.654 | DEBUG    | podcast_creator.config:get_template_prompter:249 - Using template from current directory: /app/prompts/podcast/outline.jinja
+open_notebook-1  | 2026-04-03 12:26:22.657 | DEBUG    | podcast_creator.config:get_template_prompter:249 - Using template from current directory: /app/prompts/podcast/transcript.jinja
+open_notebook-1  | 2026-04-03 12:26:22.662 | INFO     | podcast_creator.graph:<module>:20 - Creating podcast generation graph
+open_notebook-1  | 2026-04-03 12:26:22.670 | DEBUG    | surreal_commands.decorators:decorator:76 - Retry config parsed for command open_notebook.generate_podcast: enabled=True max_attempts=1 wait_strategy=<RetryStrategy.EXPONENTIAL: 'exponential'> wait_time=1.0 wait_min=1.0 wait_max=60.0 wait_multiplier=2.0 retry_on=None stop_on=None retry_log_level=<RetryLogLevel.INFO: 'info'>
+open_notebook-1  | 2026-04-03 12:26:22.670 | DEBUG    | surreal_commands.core.registry:register:78 - Registered command open_notebook.generate_podcast
+open_notebook-1  |   ??? Imported: commands
+open_notebook-1  | Successfully imported 1/1 modules
+open_notebook-1  | Using 10 registered commands
+open_notebook-1  | Worker configured to handle up to 5 concurrent tasks
+open_notebook-1  | 2026-04-03 12:26:23.095 | INFO     | api.main:<module>:53 - Commands imported in API process
+open_notebook-1  | [12:26:23] Checking for existing commands...                       worker.py:109
+open_notebook-1  | INFO:     Started server process [20]
+open_notebook-1  | INFO:     Waiting for application startup.
+open_notebook-1  | 2026-04-03 12:26:23.138 | INFO     | api.main:lifespan:67 - Starting API initialization...
+open_notebook-1  |            No existing commands found                              worker.py:139
+open_notebook-1  |            Starting LIVE query listener for new commands...        worker.py:142
+open_notebook-1  | 2026-04-03 12:26:23.175 | INFO     | api.main:lifespan:82 - Current database version: 14
+open_notebook-1  | 2026-04-03 12:26:23.203 | INFO     | api.main:lifespan:92 - Database is already at the latest version. No migrations needed.
+open_notebook-1  | 2026-04-03 12:26:23.204 | INFO     | open_notebook.podcasts.migration:migrate_podcast_profiles:70 - Starting podcast profile data migration...
+open_notebook-1  | 2026-04-03 12:26:23.281 | WARNING  | open_notebook.podcasts.migration:_find_or_create_model:41 - No credential found for provider 'openai'. Cannot auto-create model 'gpt-5-mini'. Profile needs manual migration.
+open_notebook-1  | 2026-04-03 12:26:23.329 | WARNING  | open_notebook.podcasts.migration:_find_or_create_model:41 - No credential found for provider 'openai'. Cannot auto-create model 'gpt-5-mini'. Profile needs manual migration.
+open_notebook-1  | 2026-04-03 12:26:23.329 | WARNING  | open_notebook.podcasts.migration:migrate_podcast_profiles:127 - Could not migrate episode profile 'tech_discussion': no matching models found
+open_notebook-1  | 2026-04-03 12:26:23.379 | WARNING  | open_notebook.podcasts.migration:_find_or_create_model:41 - No credential found for provider 'openai'. Cannot auto-create model 'gpt-5-mini'. Profile needs manual migration.
+open_notebook-1  | 2026-04-03 12:26:23.428 | WARNING  | open_notebook.podcasts.migration:_find_or_create_model:41 - No credential found for provider 'openai'. Cannot auto-create model 'gpt-5-mini'. Profile needs manual migration.
+open_notebook-1  | 2026-04-03 12:26:23.428 | WARNING  | open_notebook.podcasts.migration:migrate_podcast_profiles:127 - Could not migrate episode profile 'solo_expert': no matching models found
+open_notebook-1  | 2026-04-03 12:26:23.475 | WARNING  | open_notebook.podcasts.migration:_find_or_create_model:41 - No credential found for provider 'openai'. Cannot auto-create model 'gpt-5-mini'. Profile needs manual migration.
+open_notebook-1  | 2026-04-03 12:26:23.522 | WARNING  | open_notebook.podcasts.migration:_find_or_create_model:41 - No credential found for provider 'openai'. Cannot auto-create model 'gpt-5-mini'. Profile needs manual migration.
+open_notebook-1  | 2026-04-03 12:26:23.522 | WARNING  | open_notebook.podcasts.migration:migrate_podcast_profiles:127 - Could not migrate episode profile 'business_analysis': no matching models found
+open_notebook-1  | 2026-04-03 12:26:23.593 | WARNING  | open_notebook.podcasts.migration:_find_or_create_model:41 - No credential found for provider 'openai'. Cannot auto-create model 'gpt-4o-mini-tts'. Profile needs manual migration.
+open_notebook-1  | 2026-04-03 12:26:23.593 | WARNING  | open_notebook.podcasts.migration:migrate_podcast_profiles:176 - Could not migrate speaker profile 'business_panel': no matching model found
+open_notebook-1  | 2026-04-03 12:26:23.642 | WARNING  | open_notebook.podcasts.migration:_find_or_create_model:41 - No credential found for provider 'openai'. Cannot auto-create model 'gpt-4o-mini-tts'. Profile needs manual migration.
+open_notebook-1  | 2026-04-03 12:26:23.642 | WARNING  | open_notebook.podcasts.migration:migrate_podcast_profiles:176 - Could not migrate speaker profile 'tech_experts': no matching model found
+open_notebook-1  | 2026-04-03 12:26:23.689 | WARNING  | open_notebook.podcasts.migration:_find_or_create_model:41 - No credential found for provider 'openai'. Cannot auto-create model 'gpt-4o-mini-tts'. Profile needs manual migration.
+open_notebook-1  | 2026-04-03 12:26:23.689 | WARNING  | open_notebook.podcasts.migration:migrate_podcast_profiles:176 - Could not migrate speaker profile 'solo_expert': no matching model found
+open_notebook-1  | 2026-04-03 12:26:23.689 | INFO     | open_notebook.podcasts.migration:migrate_podcast_profiles:185 - Podcast profile migration complete. Episodes: 0 migrated, 0 skipped, 3 failed. Speakers: 0 migrated, 0 skipped, 3 failed.
+open_notebook-1  | 2026-04-03 12:26:23.689 | SUCCESS  | api.main:lifespan:110 - API initialization completed successfully
+open_notebook-1  | INFO:     Application startup complete.
+open_notebook-1  | INFO:     Uvicorn running on http://0.0.0.0:5055 (Press CTRL+C to quit)
+open_notebook-1  | 2026-04-03 12:26:24,690 INFO success: worker entered RUNNING state, process has stayed up for > than 3 seconds (startsecs)
+open_notebook-1  | 2026-04-03 12:26:24,690 INFO success: worker entered RUNNING state, process has stayed up for > than 3 seconds (startsecs)
+open_notebook-1  | INFO:     127.0.0.1:36334 - "GET /health HTTP/1.1" 200 OK
+open_notebook-1  | API is ready! Starting frontend...
+open_notebook-1  | ??? Next.js 16.1.5
+open_notebook-1  | - Local:         http://localhost:8502
+open_notebook-1  | - Network:       http://0.0.0.0:8502
+open_notebook-1  | 
+open_notebook-1  | ??? Starting...
+open_notebook-1  | ??? Ready in 82ms
+open_notebook-1  | [runtime-config] Auto-detected API URL: http://localhost:5055 (proto=http, host=localhost:8502)
+open_notebook-1  | [runtime-config] Auto-detected API URL: http://localhost:5055 (proto=http, host=localhost:8502)
+open_notebook-1  | 2026-04-03 12:26:29.537 | INFO     | api.routers.config:get_latest_version_cached:66 - Checking for latest version from GitHub...
+open_notebook-1  | 2026-04-03 12:26:29.578 | INFO     | api.routers.config:get_latest_version_cached:66 - Checking for latest version from GitHub...
+open_notebook-1  | 2026-04-03 12:26:29.688 | INFO     | api.routers.config:get_latest_version_cached:73 - Latest version from GitHub: 1.8.1, Current version: 1.8.1
+open_notebook-1  | 2026-04-03 12:26:29.688 | INFO     | api.routers.config:get_latest_version_cached:86 - Version check complete. Update available: False
+open_notebook-1  | 2026-04-03 12:26:29.706 | INFO     | api.routers.config:get_latest_version_cached:73 - Latest version from GitHub: 1.8.1, Current version: 1.8.1
+open_notebook-1  | 2026-04-03 12:26:29.707 | INFO     | api.routers.config:get_latest_version_cached:86 - Version check complete. Update available: False
+open_notebook-1  | INFO:     172.18.0.1:45570 - "GET /api/config HTTP/1.1" 200 OK
+open_notebook-1  | INFO:     172.18.0.1:45566 - "GET /api/config HTTP/1.1" 200 OK
+open_notebook-1  | INFO:     172.18.0.1:45566 - "GET /api/auth/status HTTP/1.1" 200 OK
+open_notebook-1  | INFO:     172.18.0.1:45570 - "GET /api/auth/status HTTP/1.1" 200 OK
+open_notebook-1  | INFO:     172.18.0.1:45588 - "GET /api/credentials/env-status HTTP/1.1" 200 OK
+open_notebook-1  | INFO:     172.18.0.1:45566 - "GET /api/notebooks?order_by=updated+desc HTTP/1.1" 200 OK
+open_notebook-1  | INFO:     172.18.0.1:45570 - "GET /api/transformations HTTP/1.1" 200 OK
+open_notebook-1  | INFO:     172.18.0.1:45602 - "GET /api/notebooks?archived=false&order_by=updated+desc HTTP/1.1" 200 OK
+open_notebook-1  | INFO:     172.18.0.1:45588 - "GET /api/settings HTTP/1.1" 200 OK
+open_notebook-1  | INFO:     172.18.0.1:45606 - "GET /api/notebooks?archived=true&order_by=updated+desc HTTP/1.1" 200 OK
+open_notebook-1  | INFO:     172.18.0.1:45566 - "GET /api/episode-profiles HTTP/1.1" 200 OK
+open_notebook-1  | INFO:     172.18.0.1:45578 - "GET /api/credentials/status HTTP/1.1" 200 OK
+open_notebook-1  | 2026-04-03 12:26:31,270 INFO success: frontend entered RUNNING state, process has stayed up for > than 10 seconds (startsecs)
+open_notebook-1  | 2026-04-03 12:26:31,270 INFO success: frontend entered RUNNING state, process has stayed up for > than 10 seconds (startsecs)
+open_notebook-1  | INFO:     172.18.0.1:45566 - "GET /api/models HTTP/1.1" 200 OK
+open_notebook-1  | INFO:     172.18.0.1:45578 - "GET /api/models/defaults HTTP/1.1" 200 OK
+open_notebook-1  | INFO:     127.0.0.1:46582 - "POST /api/search/ask HTTP/1.1" 200 OK
+open_notebook-1  | 2026-04-03 12:26:34.923 | ERROR    | api.routers.search:stream_ask_response:108 - Error in ask streaming: Authentication failed. Please check your API key in Settings -> Credentials.
+open_notebook-1  | INFO:     172.18.0.1:41782 - "GET /api/credentials/by-provider/ollama HTTP/1.1" 200 OK
+open_notebook-1  | INFO:     172.18.0.1:45112 - "GET /api/models HTTP/1.1" 200 OK
+open_notebook-1  | INFO:     172.18.0.1:34258 - "GET /api/models HTTP/1.1" 200 OK
+open_notebook-1  | INFO:     172.18.0.1:34800 - "GET /api/credentials HTTP/1.1" 200 OK
+open_notebook-1  | INFO:     172.18.0.1:36284 - "PUT /api/credentials/credential%3Afytv58b5vhisnsyx27vv HTTP/1.1" 200 OK
+open_notebook-1  | INFO:     172.18.0.1:36290 - "POST /api/search/ask HTTP/1.1" 200 OK
+open_notebook-1  | INFO:     172.18.0.1:35812 - "POST /api/search/ask HTTP/1.1" 200 OK
+open_notebook-1  | INFO:     172.18.0.1:49530 - "POST /api/search/ask HTTP/1.1" 200 OK
+open_notebook-1  | INFO:     172.18.0.1:55164 - "POST /api/search/ask HTTP/1.1" 200 OK
+open_notebook-1  | INFO:     172.18.0.1:37416 - "GET /api/models HTTP/1.1" 200 OK
+open_notebook-1  | INFO:     172.18.0.1:37428 - "GET /api/credentials/by-provider/ollama HTTP/1.1" 200 OK
+open_notebook-1  | INFO:     172.18.0.1:36982 - "POST /api/search/ask HTTP/1.1" 200 OK

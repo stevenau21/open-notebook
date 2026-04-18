@@ -1,0 +1,74 @@
+[
+  {
+    "id": "model:214toh1hh9mo4ixyq4es",
+    "name": "minimax-m2.7:cloud",
+    "provider": "ollama",
+    "type": "language",
+    "credential": "credential:fytv58b5vhisnsyx27vv",
+    "created": "2026-03-22 13:52:13.611068+00:00",
+    "updated": "2026-03-22 13:52:13.611075+00:00"
+  },
+  {
+    "id": "model:26imeg3brt52ov5iow76",
+    "name": "nomic-embed-text-v2-moe:latest",
+    "provider": "ollama",
+    "type": "embedding",
+    "credential": "credential:fytv58b5vhisnsyx27vv",
+    "created": "2026-03-22 13:53:06.316122+00:00",
+    "updated": "2026-03-22 13:53:06.316128+00:00"
+  },
+  {
+    "id": "model:3chb39i0hn86qimlda7j",
+    "name": "qwen3.5:397b-cloud",
+    "provider": "ollama",
+    "type": "language",
+    "credential": "credential:fytv58b5vhisnsyx27vv",
+    "created": "2026-03-22 13:52:13.854568+00:00",
+    "updated": "2026-03-22 13:52:13.854574+00:00"
+  },
+  {
+    "id": "model:8077fe4zpm11orptb4q7",
+    "name": "qwen:0.5b",
+    "provider": "ollama",
+    "type": "language",
+    "credential": "credential:fytv58b5vhisnsyx27vv",
+    "created": "2026-03-22 13:52:14.085952+00:00",
+    "updated": "2026-03-22 13:52:14.085957+00:00"
+  },
+  {
+    "id": "model:dmm0nca36u4hi3rwv0g0",
+    "name": "gpt-oss:20b-cloud",
+    "provider": "ollama",
+    "type": "language",
+    "credential": "credential:fytv58b5vhisnsyx27vv",
+    "created": "2026-03-22 13:52:12.847660+00:00",
+    "updated": "2026-03-22 13:52:12.847666+00:00"
+  },
+  {
+    "id": "model:exp4j79ws9ouu9ecmxbj",
+    "name": "nomic-embed-text-v2-moe:latest",
+    "provider": "ollama",
+    "type": "language",
+    "credential": "credential:fytv58b5vhisnsyx27vv",
+    "created": "2026-03-22 13:52:12.602989+00:00",
+    "updated": "2026-03-22 13:52:12.602995+00:00"
+  },
+  {
+    "id": "model:gjza0mat799ewht33j9w",
+    "name": "gpt-oss:120b-cloud",
+    "provider": "ollama",
+    "type": "language",
+    "credential": "credential:fytv58b5vhisnsyx27vv",
+    "created": "2026-03-22 13:52:13.097196+00:00",
+    "updated": "2026-03-22 13:52:13.097202+00:00"
+  },
+  {
+    "id": "model:zge71ijl5r7813qvvob8",
+    "name": "nemotron-3-super:cloud",
+    "provider": "ollama",
+    "type": "language",
+    "credential": "credential:fytv58b5vhisnsyx27vv",
+    "created": "2026-03-22 13:52:13.330611+00:00",
+    "updated": "2026-03-22 13:52:13.330617+00:00"
+  }
+]

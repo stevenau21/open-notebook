@@ -1,0 +1,25 @@
+[
+  {
+    "id": "credential:fytv58b5vhisnsyx27vv",
+    "name": "Local Ollama",
+    "provider": "ollama",
+    "modalities": [
+      "language",
+      "embedding"
+    ],
+    "base_url": "http://host.docker.internal:11434",
+    "endpoint": null,
+    "api_version": null,
+    "endpoint_llm": null,
+    "endpoint_embedding": null,
+    "endpoint_stt": null,
+    "endpoint_tts": null,
+    "project": null,
+    "location": null,
+    "credentials_path": null,
+    "has_api_key": true,
+    "created": "2026-03-22 13:49:36+00:00",
+    "updated": "2026-04-03 12:10:32.568730+00:00",
+    "model_count": 8
+  }
+]

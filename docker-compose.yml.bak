@@ -30,23 +30,8 @@ services:
       - SURREAL_PASSWORD=root
       - SURREAL_NAMESPACE=open_notebook
       - SURREAL_DATABASE=open_notebook
-
-      # Ollama running in WSL
-      - OLLAMA_API_BASE=http://host.docker.internal:11434
-      - API_URL=https://notebook.brandformance.app
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
     volumes:
       - ./notebook_data:/app/data
-      - ./supervisord.conf:/etc/supervisor/conf.d/supervisord.conf
     depends_on:
       - surrealdb
-    restart: always
-
-  cloudflared:
-    image: cloudflare/cloudflared:latest
-    command: tunnel --no-autoupdate run
-    volumes:
-      - ./tunnel_credentials.json:/etc/cloudflared/credentials.json
-      - ./cloudflared_config.yml:/etc/cloudflared/config.yaml
     restart: always

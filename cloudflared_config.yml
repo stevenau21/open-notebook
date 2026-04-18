@@ -1,0 +1,10 @@
+tunnel: 11970bcb-9686-4e4f-adf5-23a8df65eed3
+credentials-file: /etc/cloudflared/credentials.json
+
+ingress:
+  - hostname: notebook.brandformance.app
+    path: /api
+    service: http://open_notebook:5055
+  - hostname: notebook.brandformance.app
+    service: http://open_notebook:8502
+  - service: http_status:404

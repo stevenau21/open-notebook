@@ -22,7 +22,7 @@ _CLASSIFICATION_RULES: list[tuple[list[str], type[OpenNotebookError], str | None
     (
         ["authentication", "unauthorized", "invalid api key", "invalid_api_key", "401"],
         AuthenticationError,
-        "Authentication failed. Please check your API key in Settings -> Credentials.",
+        "Authentication failed. Please check your API key in Settings → Models.",
     ),
     # Rate limit errors
     (
