@@ -3,8 +3,13 @@ credentials-file: /etc/cloudflared/credentials.json
 
 ingress:
   - hostname: notebook.brandformance.app
-    path: /api
-    service: http://open_notebook:5055
-  - hostname: notebook.brandformance.app
-    service: http://open_notebook:8502
+    service: http://localhost:8502
+    originRequest:
+      noTLSVerify: true
+      connectTimeout: 30s
+      keepAliveTimeout: 90s
+      keepAliveConnections: 10
+      httpHostHeader: notebook.brandformance.app
+  - hostname: trader.brandformance.app
+    service: http://localhost:8501
   - service: http_status:404

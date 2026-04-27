@@ -45,7 +45,7 @@ foreach ($port in $ports) {
     netsh interface portproxy delete v4tov4 listenport=$port listenaddress=0.0.0.0 2>&1 | Out-Null
     # Add new rule
     netsh interface portproxy add v4tov4 listenport=$port listenaddress=0.0.0.0 connectport=$port connectaddress=$wslIp 2>&1 | Out-Null
-    Log "  Port $port -> $wslIp:$port"
+    Log "  Port $port -> $($wslIp):$port"
 }
 
 # 5. Verify

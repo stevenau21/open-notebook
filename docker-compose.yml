@@ -1,52 +1,66 @@
+networks:
+  app_net:
+    driver: bridge
 services:
-  surrealdb:
-    image: surrealdb/surrealdb:v2
-    command: start --log info --user root --pass root rocksdb:/mydata/mydatabase.db
-    user: root  # Required for bind mounts on Linux
-    ports:
-      - "8000:8000"
-    volumes:
-      - ./surreal_data:/mydata
-    environment:
-      - SURREAL_EXPERIMENTAL_GRAPHQL=true
+  cloudflared:
+    command: tunnel --no-autoupdate run --protocol http2
+    depends_on:
+      open_notebook:
+        condition: service_healthy
+    image: cloudflare/cloudflared:latest
+    network_mode: host
     restart: always
-    pull_policy: always
-
+    volumes:
+    - ./tunnel_credentials.json:/etc/cloudflared/credentials.json
+    - ./cloudflared_config.yml:/etc/cloudflared/config.yaml
   open_notebook:
     build:
       context: .
       dockerfile: Dockerfile
-    ports:
-      - "8502:8502"  # Web UI
-      - "5055:5055"  # REST API
-    environment:
-      # REQUIRED: Change this to your own secret string
-      # This encrypts your API keys in the database
-      - OPEN_NOTEBOOK_ENCRYPTION_KEY=change-me-to-a-secret-string
-
-      # Database connection (default values - no need to change)
-      - SURREAL_URL=ws://surrealdb:8000/rpc
-      - SURREAL_USER=root
-      - SURREAL_PASSWORD=root
-      - SURREAL_NAMESPACE=open_notebook
-      - SURREAL_DATABASE=open_notebook
-
-      # Ollama running in WSL
-      - OLLAMA_API_BASE=http://host.docker.internal:11434
-      - API_URL=https://notebook.brandformance.app
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
-    volumes:
-      - ./notebook_data:/app/data
-      - ./supervisord.conf:/etc/supervisor/conf.d/supervisord.conf
     depends_on:
-      - surrealdb
+    - surrealdb
+    environment:
+    - OPEN_NOTEBOOK_ENCRYPTION_KEY=change-me-to-a-secret-string
+    - SURREAL_URL=ws://surrealdb:8000/rpc
+    - SURREAL_USER=root
+    - SURREAL_PASSWORD=root
+    - SURREAL_NAMESPACE=open_notebook
+    - SURREAL_DATABASE=open_notebook
+    - OLLAMA_API_BASE=http://host.docker.internal:11434
+    - API_URL=https://notebook.brandformance.app
+    - INTERNAL_API_URL=http://localhost:5055
+    extra_hosts:
+    - host.docker.internal:host-gateway
+    healthcheck:
+      interval: 10s
+      retries: 30
+      start_period: 60s
+      test:
+      - CMD
+      - curl
+      - -f
+      - http://localhost:8502/
+      timeout: 5s
+    networks:
+    - app_net
+    ports:
+    - 8502:8502
+    - 5055:5055
     restart: always
-
-  cloudflared:
-    image: cloudflare/cloudflared:latest
-    command: tunnel --no-autoupdate run
     volumes:
-      - ./tunnel_credentials.json:/etc/cloudflared/credentials.json
-      - ./cloudflared_config.yml:/etc/cloudflared/config.yaml
+    - ./notebook_data:/app/data
+    - ./supervisord.conf:/etc/supervisor/conf.d/supervisord.conf
+  surrealdb:
+    command: start --log info --user root --pass root rocksdb:/mydata/mydatabase.db
+    environment:
+    - SURREAL_EXPERIMENTAL_GRAPHQL=true
+    image: surrealdb/surrealdb:v2
+    networks:
+    - app_net
+    ports:
+    - 8000:8000
+    pull_policy: always
     restart: always
+    user: root
+    volumes:
+    - ./surreal_data:/mydata
